@@ -2,8 +2,13 @@
 $studentId = $_GET['sid'];
 include 'config/dbConfig.php';
 // querying the tables to return information about the student and the course that they are enrolled on
- $students = $conn->prepare("
-//  Query will go here
+ $students = $conn->prepare("SELECT
+    student_name,
+    address,
+    dob,
+    tel
+    FROM student
+    WHERE student_id = $studentId
 ");
 $students->execute();
 $students->store_result();
